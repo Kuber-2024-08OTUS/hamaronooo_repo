@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: nginx-pvc
+  namespace: homework
+spec:
+  resources:
+    requests:
+      storage: 100Mi
+  volumeMode: Filesystem
+  storageClassName: nginx-storage
+  accessModes:
+    - ReadWriteOnce
