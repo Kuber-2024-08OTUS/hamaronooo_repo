@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-service
+  namespace: homework
+spec:
+  type: ClusterIP
+  selector:
+    app: nginx
+  ports:
+  - protocol: TCP
+    port: 8080
+    name: nginx-service # name to create link to this port Number from ingress
+    targetPort: nginx-port #link to pod named port
