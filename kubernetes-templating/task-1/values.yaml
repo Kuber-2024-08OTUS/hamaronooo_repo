@@ -1,0 +1,24 @@
+image:
+  registry: nginx
+  tag: latest
+
+namespace:
+  name: homework
+
+deployment:
+  name: nginx-deployment
+
+containers:
+  nginx:
+    name: nginx
+    replicas: 3
+    port:
+      value: 8000
+      name: nginx-port
+probes:
+  enabled: true
+
+service:
+  port:
+    value: 8080
+    name: nginx-service

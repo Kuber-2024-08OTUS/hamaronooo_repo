@@ -1,0 +1,8 @@
+===========
+= SUCCESS =
+===========
+USE:
+export NODE_IP=$(kubectl get -n {{ .Values.namespace.name }} -o jsonpath="{..ip}" ingress)
+echo http://$NODE_IP/homepage
+curl -v http://$NODE_IP/homepage
+===========
