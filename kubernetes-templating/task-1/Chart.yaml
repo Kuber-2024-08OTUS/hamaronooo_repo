@@ -1,0 +1,10 @@
+name: homework-6
+version: "1.0.0"
+apiVersion: v2
+appVersion: "0.0.1"
+type: application
+description: helm chart for otus homework
+dependencies:
+  - name: redis
+    version: "17.3.14"  # Замените на нужную версию
+    repository: "https://charts.bitnami.com/bitnami"
