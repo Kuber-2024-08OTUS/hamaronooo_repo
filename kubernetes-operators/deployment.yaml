@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql-deployment
+  namespace: homework
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mysql-operator
+  template:
+    metadata:
+      name: mysql-operator
+      labels:
+        app: mysql-operator
+    spec:
+      serviceAccountName: mysql-admin
+      containers:
+        - name: rofl
+          image: roflmaoinmysoul/mysql-operator:1.0.0
+      restartPolicy: Always
