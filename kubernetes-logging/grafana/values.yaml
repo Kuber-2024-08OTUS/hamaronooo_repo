@@ -1,0 +1,22 @@
+tolerations:
+- key: "node-role"
+  operator: "Equal"
+  value: "infrastructure"
+  effect: "NoSchedule"
+affinity: 
+  nodeAffinity:
+    requiredDuringSchedulingIgnoredDuringExecution:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: node-role
+          operator: In
+          values:
+          - infrastructure
+datasources:
+  datasources.yaml:
+    apiVersion: 1
+    datasources:
+    - name: loki
+      type: loki
+      isDefault: true
+      url: http://loki-gateway
