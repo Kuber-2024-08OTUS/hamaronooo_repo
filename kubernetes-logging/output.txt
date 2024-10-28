@@ -1,0 +1,27 @@
+> kubectl get node -o wide --show-labels
+NAME                        STATUS   ROLES    AGE   VERSION   INTERNAL-IP    EXTERNAL-IP      OS-IMAGE             KERNEL-VERSION      CONTAINER-RUNTIME     LABELS
+cl167irmurn8uhak1v3a-ewyg   Ready    <none>   12m   v1.27.3   192.168.0.21   130.193.51.156   Ubuntu 20.04.6 LTS   5.4.0-177-generic   containerd://1.6.28   beta.kubernetes.io/arch=amd64,beta.kubernetes.io/instance-type=standard-v2,beta.kubernetes.io/os=linux,failure-domain.beta.kubernetes.io/zone=ru-central1-a,kubernetes.io/arch=amd64,kubernetes.io/hostname=cl167irmurn8uhak1v3a-ewyg,kubernetes.io/os=linux,node.kubernetes.io/instance-type=standard-v2,node.kubernetes.io/kube-proxy-ds-ready=true,node.kubernetes.io/masq-agent-ds-ready=true,node.kubernetes.io/node-problem-detector-ds-ready=true,topology.kubernetes.io/zone=ru-central1-a,yandex.cloud/node-group-id=cat7boa0a95h5cg22qu6,yandex.cloud/pci-topology=k8s,yandex.cloud/preemptible=true
+cl1i68tiojabha5vv5su-agev   Ready    <none>   10m   v1.27.3   192.168.0.7    158.160.47.14    Ubuntu 20.04.6 LTS   5.4.0-177-generic   containerd://1.6.28   beta.kubernetes.io/arch=amd64,beta.kubernetes.io/instance-type=standard-v2,beta.kubernetes.io/os=linux,failure-domain.beta.kubernetes.io/zone=ru-central1-a,kubernetes.io/arch=amd64,kubernetes.io/hostname=cl1i68tiojabha5vv5su-agev,kubernetes.io/os=linux,node-role=infrastructure,node.kubernetes.io/instance-type=standard-v2,node.kubernetes.io/kube-proxy-ds-ready=true,node.kubernetes.io/masq-agent-ds-ready=true,node.kubernetes.io/node-problem-detector-ds-ready=true,topology.kubernetes.io/zone=ru-central1-a,yandex.cloud/node-group-id=catlsgn9ktl7ff2pmg6i,yandex.cloud/pci-topology=k8s,yandex.cloud/preemptible=true
+
+
+> kubectl get nodes -o custom-columns=NAME:.metadata.name,TAINTS:.spec.taints
+NAME                        TAINTS
+cl167irmurn8uhak1v3a-ewyg   <none>
+cl1i68tiojabha5vv5su-agev   [map[effect:NoSchedule key:node-role value:infrastructure]]
+
+
+
+> kubectl get pods -n dz9   
+NAME                            READY   STATUS    RESTARTS   AGE
+grafana-6887f57dc-8krdk         1/1     Running   0          4h1m
+loki-backend-0                  2/2     Running   0          4h1m
+loki-chunks-cache-0             2/2     Running   0          4h7m
+loki-gateway-644c8d69f8-m8rcr   1/1     Running   0          4h7m
+loki-read-658c85c4bd-dkl4t      1/1     Running   0          25m
+loki-results-cache-0            2/2     Running   0          4h7m
+loki-write-0                    1/1     Running   0          4h1m
+promatil-promtail-2657d         1/1     Running   0          4h7m
+promatil-promtail-4fj9g         1/1     Running   0          4h7m
+
+
+# ! Скриншот из Grafana в корне директории, grafana-loki.png
