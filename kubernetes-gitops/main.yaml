@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: root
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    name: in-cluster
+    namespace: argocd
+  source:
+    path: "kubernetes-gitops/app"
+    repoURL: "git@github.com:Kuber-2024-08OTUS/hamaronooo_repo.git"
+    targetRevision: kubernetes-gitops
+  project: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

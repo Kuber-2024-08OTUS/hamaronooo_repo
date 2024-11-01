@@ -1,0 +1,4 @@
+container:
+  image: httpd:latest
+
+replicaCount: 3
