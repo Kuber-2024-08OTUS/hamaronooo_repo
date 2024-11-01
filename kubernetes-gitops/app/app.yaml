@@ -1,0 +1,27 @@
+apiVersion: v2
+kind: Application
+metadata:
+  name: test
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: otus
+    name: in-cluster
+  project: default
+  source:
+    path: kubernetes-gitops/HelmCharts/MyChart1
+    repoURL: git@github.com:Kuber-2024-08OTUS/hamaronooo_repo.git
+    targetRevision: kubernetes-gitops
+    helm:
+      valueFiles:
+      - values.yaml
+
+  project: otus
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true

@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: root
+spec:
+  destination:
+    name: "in-cluster"
+    namespace: argocd
+  source:
+    path: kubernetes-gitops/app
+    repoURL: git@github.com:Kuber-2024-08OTUS/hamaronooo_repo.git
+    targetRevision: kubernetes-gitops
+  sources: []
+  project: otus
+  syncPolicy:
+    automated:
+      prune: false
+      selfHeal: false
+    syncOptions:
+      - ApplyOutOfSyncOnly=true
