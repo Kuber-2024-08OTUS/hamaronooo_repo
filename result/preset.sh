@@ -1,13 +1,13 @@
+apt install sudo -y
+sudo adduser kutumov sudo
+
+
 echo '192.168.31.231 kube-node-01.home.local' >> /etc/hosts
 echo '192.168.31.232 kube-node-02.home.local' >> /etc/hosts
 echo '192.168.31.233 kube-node-03.home.local' >> /etc/hosts
 systemctl restart networking.service
 
-
-apt install sudo -y
-sudo adduser kutumov sudo
-sudo -i
-
+chmod +x ./init-master-01.sh ./init-master-02.sh ./init-worker-01.sh
 
 echo "net.ipv4.ip_forward=1" >> /etc/sysctl.conf
 # -- 
