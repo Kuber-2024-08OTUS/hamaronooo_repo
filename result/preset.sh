@@ -1,7 +1,3 @@
-apt install sudo -y
-sudo adduser kutumov sudo
-
-
 echo '192.168.31.231 kube-node-01.home.local' >> /etc/hosts
 echo '192.168.31.232 kube-node-02.home.local' >> /etc/hosts
 echo '192.168.31.233 kube-node-03.home.local' >> /etc/hosts
@@ -25,9 +21,8 @@ EOF
 # apply
 sudo sysctl --system
 
-
+sudo apt install iptables -y
 sudo systemctl stop firewalld
-
 
 chmod +x ./enviroment/disable_swap.sh
 ./enviroment/disable_swap.sh
